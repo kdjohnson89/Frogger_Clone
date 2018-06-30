@@ -49,9 +49,8 @@ class Player extends Entity {
     super.render();
     this.moving = false;
     }
-  }
-
-  function handleInput(input) {
+  
+  handleInput(input) {
     switch (input) {
       case 'left':
           this.x = this.x > 0 ? this.x - 1 : this.x;
@@ -69,7 +68,8 @@ class Player extends Entity {
           break;
     }
     this.moving = true;
-  }
+  }  
+ }
 
 
 // Enemies our player must avoid

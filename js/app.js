@@ -1,6 +1,6 @@
 class Entity {
   constructor() {
-    this.sprite = 'images/';
+    this.sprite = 'img/';
     this.x = 2;
     this.y = 5;
   }

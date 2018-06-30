@@ -51,7 +51,7 @@ class Player extends Entity {
     }
   }
 
-  handleInput(input) {
+  function handleInput(input) {
     switch (input) {
       case 'left':
           this.x = this.x > 0 ? this.x - 1 : this.x;

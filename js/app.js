@@ -1,3 +1,6 @@
+// Win modal when player reaches the water
+const winModal = document.getElementById("win-modal");
+
 class Entity {
   constructor() {
     this.sprite = 'img/';
@@ -40,7 +43,8 @@ class Player extends Entity {
   update(dt) {
     super.update();
     if (this.isOutOfBoundsY && !this.moving && !this.win) {
-      alert("Win");
+      winModal.style.display = "block";
+      clearInterval(timer);
       this.win = true;
     }
   }
@@ -49,7 +53,7 @@ class Player extends Entity {
     super.render();
     this.moving = false;
     }
-  
+
   handleInput(input) {
     switch (input) {
       case 'left':
@@ -60,33 +64,35 @@ class Player extends Entity {
           break;
       case 'right':
           this.x = this.x < 4 ? this.x + 1 : this.x;
-          break;
+            break;
       case 'down':
           this.y = this.y < 5 ? this.y + 1 : this.y;
           break;
       default:
           break;
+      }
+      this.moving = true;
     }
-    this.moving = true;
-  }  
- }
-
+  }
 
 // Enemies our player must avoid
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 class Enemy extends Entity {
-  constructor(x, y) {
-      super();
-      this.sprite += 'enemy-bug.png';
-      this.x = x;
-      this.y = y;
+  constructor(x, y, speed) {
+    super();
+    this.sprite += 'enemy-bug.png';
+    this.x = x;
+    this.y = y;
+    this.speed = 1 + Math.random() * 3;
   }
 
   update(dt) {
     super.update();
+    this.x += this.speed * dt;
     if(this.isOutOfBoundsX) {
       this.x = -1;
+      this.speed = 1 + Math.random() * 3;
     }
     else {
       this.x += dt;
@@ -97,9 +103,8 @@ class Enemy extends Entity {
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
-const allEnemies = [...Array(3)].map((_,i)=> new Enemy(0,i+1));
-const player = new Player();
+const allEnemies = [...Array(3)].map((_,i) => new Enemy(0,i+1));
+const player = new Player();  
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
@@ -113,3 +118,46 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+// Start modal
+const startModal = document.getElementById("start-modal");
+const start = document.querySelector("button").addEventListener('click', startGame);
+
+function startGame() {
+  startModal.style.display = "none";
+  timeLeft = 30;
+}
+
+// Timer that counts down from 30 seconds and triggers lose modal if time is up
+const loseModal = document.getElementById("lose-modal");
+let timeLeft;
+
+const timer = setInterval(function () {
+  timeLeft--;
+  document.getElementById("time").innerHTML = timeLeft;
+  if (timeLeft === 0) {
+    clearInterval(timer);
+    loseModal.style.display = "block"; 
+  }
+}, 1000);
+
+// When "Play Again?" button is selected, window is reloaded
+function playAgain() {
+    window.location.reload(true);
+}
+
+// Get the <span> element that closes the modal
+let span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    loseModal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == loseModal || event.target == winModal) {
+        loseModal.style.display = "none";
+        winModal.style.display = "none";
+    }
+};

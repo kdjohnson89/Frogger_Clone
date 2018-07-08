@@ -2,7 +2,7 @@
 
 
 ## Link to game 
-            <a href="https://kdjohnson89.github.io/Frogger_Clone/"></a>
+            https://kdjohnson89.github.io/Frogger_Clone/
 
 
 

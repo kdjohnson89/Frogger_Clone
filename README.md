@@ -22,6 +22,6 @@ Frogger_Clone
 
 
 ## References: 
-            1. [About P3 - Rubric](https://www.youtube.com/watch?v=1YHkmEBznac)
-            2. [FEND Arcade Game Project - Getting Started](https://zoom.us/recording/play/aulotDlzKFegQFIJTaTzKgWvNkVsYtlwO454vL1UPE1Cm6lOUBQCtfVurPOIAGAS?startTime=1529542978000)
-            3. [How to Create a Modal Box] (https://zoom.us/recording/play/aulotDlzKFegQFIJTaTzKgWvNkVsYtlwO454vL1UPE1Cm6lOUBQCtfVurPOIAGAS?startTime=1529542978000)
+            [About P3 - Rubric](https://www.youtube.com/watch?v=1YHkmEBznac)
+            [FEND Arcade Game Project - Getting Started](https://zoom.us/recording/play/aulotDlzKFegQFIJTaTzKgWvNkVsYtlwO454vL1UPE1Cm6lOUBQCtfVurPOIAGAS?startTime=1529542978000)
+            [How to Create a Modal Box](https://zoom.us/recording/play/aulotDlzKFegQFIJTaTzKgWvNkVsYtlwO454vL1UPE1Cm6lOUBQCtfVurPOIAGAS?startTime=1529542978000)

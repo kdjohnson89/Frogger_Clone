@@ -56,6 +56,9 @@ class Player extends Entity {
 
   handleInput(input) {
     switch (input) {
+                window.addEventListener('touchmove', function (e) {
+            myGameArea.x = e.touches[0].screenX;
+            myGameArea.y = e.touches[0].screenY;
       case 'left':
           this.x = this.x > 0 ? this.x - 1 : this.x;
           break;
